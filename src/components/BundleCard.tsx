@@ -31,24 +31,25 @@ export const BundleCard = ({
   rating,
 }: BundleCardProps) => {
   return (
-    <Card className="bg-card border-border hover:border-purple-500/50 transition-all duration-300 overflow-hidden group hover:shadow-2xl animate-fade-in">
+    <Card className="bg-card border-border hover:border-purple-500/50 transition-all duration-500 overflow-hidden group hover:shadow-2xl hover:shadow-purple-500/20 animate-fade-in hover:-translate-y-2">
       <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
         <img 
           src={image} 
           alt={title}
-          className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-64 object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500"
         />
-        <Badge className="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-none">
+        <Badge className="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-none group-hover:scale-110 transition-transform duration-300 animate-pulse">
           {badge}
         </Badge>
       </div>
       
       <CardContent className="p-6 space-y-4">
         <div className="flex items-start gap-2">
-          <span className="text-2xl">✨</span>
+          <span className="text-2xl group-hover:scale-125 transition-transform duration-300">✨</span>
           <div>
-            <h3 className="text-xl font-bold text-foreground">{title}</h3>
-            <p className="text-sm text-muted-foreground mt-1">{description}</p>
+            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">{title}</h3>
+            <p className="text-sm text-muted-foreground group-hover:text-foreground mt-1 transition-colors duration-300">{description}</p>
           </div>
         </div>
 
@@ -103,12 +104,12 @@ export const BundleCard = ({
         </div>
 
         <div className="flex gap-2 pt-4">
-          <Button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
-            <Eye className="mr-2 h-4 w-4" />
+          <Button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 group/btn">
+            <Eye className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
             Preview Bundle
           </Button>
-          <Button variant="outline" size="icon" className="border-border hover:bg-accent">
-            <Heart className="h-4 w-4" />
+          <Button variant="outline" size="icon" className="border-border hover:bg-accent hover:scale-110 transition-all duration-300 group/heart">
+            <Heart className="h-4 w-4 group-hover/heart:fill-red-500 group-hover/heart:text-red-500 transition-all duration-300" />
           </Button>
         </div>
       </CardContent>

@@ -52,14 +52,24 @@ export const HeroSection = () => {
           </p>
 
           {/* CTA Button */}
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-6 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+          <a 
+            href="https://chat.whatsapp.com/YOUR_GROUP_LINK" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-block"
           >
-            <Gift className="mr-2 h-5 w-5" />
-            UP TO 71% OFF + FREE DELIVERY
-            <Gift className="ml-2 h-5 w-5" />
-          </Button>
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-6 text-lg rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 group relative overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+              <span className="relative flex items-center gap-2">
+                <Gift className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+                Be the First to Know About Our Launch
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+            </Button>
+          </a>
 
           {/* Benefits */}
           <div className="flex flex-wrap justify-center gap-4 text-sm pt-4">
