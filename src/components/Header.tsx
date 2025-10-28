@@ -6,11 +6,11 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Announcement Bar */}
-      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white py-2.5 px-4 text-center text-sm md:text-base font-medium animate-fade-in">
+      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white py-1.5 px-4 text-center text-xs md:text-sm font-medium animate-fade-in">
         <div className="flex items-center justify-center gap-2">
-          <Sparkles className="h-4 w-4 animate-pulse" />
-          <span>BLACK FRIDAY: 71% OFF • FREE NAIROBI DELIVERY • ENDS SOON</span>
-          <Sparkles className="h-4 w-4 animate-pulse" />
+          <Sparkles className="h-3 w-3 md:h-4 md:w-4 animate-pulse-slow" />
+          <span>BLACK FRIDAY: 71% OFF • FREE NAIROBI DELIVERY</span>
+          <Sparkles className="h-3 w-3 md:h-4 md:w-4 animate-pulse-slow" />
         </div>
       </div>
 

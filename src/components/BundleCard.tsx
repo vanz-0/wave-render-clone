@@ -39,7 +39,7 @@ export const BundleCard = ({
           alt={title}
           className="w-full h-64 object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500"
         />
-        <Badge className="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-none group-hover:scale-110 transition-transform duration-300 animate-pulse">
+        <Badge className="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-none group-hover:scale-110 transition-transform duration-500 animate-pulse-slow">
           {badge}
         </Badge>
       </div>

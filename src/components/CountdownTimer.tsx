@@ -27,8 +27,8 @@ export const CountdownTimer = () => {
 
   return (
     <div className="flex flex-col items-center gap-6 mt-8 animate-fade-in">
-      <div className="flex items-center gap-3 text-foreground/90 animate-pulse">
-        <Clock className="h-6 w-6 text-accent" />
+      <div className="flex items-center gap-3 text-foreground/90">
+        <Clock className="h-6 w-6 text-accent animate-pulse-slow" />
         <span className="text-xl font-semibold tracking-wide">DEAL ENDS IN</span>
       </div>
       
@@ -39,7 +39,7 @@ export const CountdownTimer = () => {
           <div className="relative text-xs md:text-sm text-purple-200 mt-2 font-medium uppercase tracking-wider">Hours</div>
         </div>
         
-        <div className="flex items-center text-3xl font-bold text-accent animate-pulse">:</div>
+        <div className="flex items-center text-3xl font-bold text-accent animate-pulse-slow">:</div>
         
         <div className="group relative bg-gradient-to-br from-pink-600 to-pink-800 rounded-2xl p-5 md:p-6 min-w-[90px] md:min-w-[100px] text-center shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(236,72,153,0.6)] animate-scale-in" style={{ animationDelay: '0.1s' }}>
           <div className="absolute inset-0 bg-gradient-to-br from-pink-400/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -47,7 +47,7 @@ export const CountdownTimer = () => {
           <div className="relative text-xs md:text-sm text-pink-200 mt-2 font-medium uppercase tracking-wider">Minutes</div>
         </div>
         
-        <div className="flex items-center text-3xl font-bold text-accent animate-pulse">:</div>
+        <div className="flex items-center text-3xl font-bold text-accent animate-pulse-slow">:</div>
         
         <div className="group relative bg-gradient-to-br from-orange-600 to-orange-800 rounded-2xl p-5 md:p-6 min-w-[90px] md:min-w-[100px] text-center shadow-2xl transition-all duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(249,115,22,0.6)] animate-scale-in" style={{ animationDelay: '0.2s' }}>
           <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
