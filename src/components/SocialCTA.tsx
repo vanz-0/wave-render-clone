@@ -105,17 +105,24 @@ export const SocialCTA = () => {
 
           {/* Main CTA */}
           <div className="pt-8">
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-4 md:px-8 md:py-6 text-sm md:text-lg rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 hover:scale-105 group relative overflow-hidden"
+            <a 
+              href="https://chat.whatsapp.com/YOUR_GROUP_LINK" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block w-full sm:w-auto max-w-md mx-auto"
             >
-              <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
-              <span className="relative flex items-center justify-center gap-2 md:gap-3">
-                <Star className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 fill-white group-hover:rotate-12 transition-transform duration-500" />
-                <span className="text-center leading-tight">Be First to Know About Our Launch</span>
-                <Star className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 fill-white group-hover:rotate-12 transition-transform duration-500" />
-              </span>
-            </Button>
+              <Button 
+                size="lg"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-4 md:px-8 md:py-6 text-sm md:text-lg rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 hover:scale-105 group relative overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+                <span className="relative flex items-center justify-center gap-2 md:gap-3">
+                  <Star className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 fill-white group-hover:rotate-12 transition-transform duration-500" />
+                  <span className="text-center leading-tight">Be First to Know About Our Launch</span>
+                  <Star className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 fill-white group-hover:rotate-12 transition-transform duration-500" />
+                </span>
+              </Button>
+            </a>
             <p className="text-sm text-muted-foreground mt-4">
               ⚡ Exclusive early access for followers
             </p>
