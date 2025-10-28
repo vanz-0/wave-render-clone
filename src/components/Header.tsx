@@ -23,8 +23,8 @@ export const Header = () => {
               alt="One Health Essentials Logo" 
               className="h-12 w-auto transition-transform duration-300 hover:scale-110 animate-fade-in"
             />
-            <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              One Health Essentials
+            <div className="text-lg md:text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              No.1 Health Essentials
             </div>
           </div>
           

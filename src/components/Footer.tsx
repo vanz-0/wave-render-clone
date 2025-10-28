@@ -32,8 +32,8 @@ export const Footer = () => {
       <div className="container mx-auto">
         <div className="text-center space-y-6">
           {/* Logo */}
-          <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            One Health Essentials
+          <div className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            No.1 Health Essentials
           </div>
 
           {/* Social Links */}
