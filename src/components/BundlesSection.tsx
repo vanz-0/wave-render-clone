@@ -75,7 +75,7 @@ export const BundlesSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 relative">
+    <section id="bundles" className="py-16 px-4 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/5 to-background" />
       
       <div className="container mx-auto relative z-10">

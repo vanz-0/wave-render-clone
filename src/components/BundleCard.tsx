@@ -1,7 +1,10 @@
 import { Button } from "./ui/button";
-import { Check, Eye, Heart, Star } from "lucide-react";
+import { Check, ShoppingCart, Heart, Star } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 interface BundleCardProps {
   title: string;
@@ -104,10 +107,49 @@ export const BundleCard = ({
         </div>
 
         <div className="flex gap-2 pt-4">
-          <Button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 group/btn">
-            <Eye className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
-            Preview Bundle
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 group/btn">
+                <ShoppingCart className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
+                Order Now
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+              <DialogHeader>
+                <DialogTitle>Complete Your Order</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4 py-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name</Label>
+                  <Input id="name" placeholder="John Doe" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone Number</Label>
+                  <Input id="phone" placeholder="+254 700 000 000" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="location">Delivery Location</Label>
+                  <Input id="location" placeholder="Westlands, Nairobi" />
+                </div>
+                <div className="bg-muted p-4 rounded-lg space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span>Item:</span>
+                    <span className="font-semibold">{title}</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span>Price:</span>
+                    <span className="font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{salePrice}</span>
+                  </div>
+                </div>
+                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
+                  Confirm Order
+                </Button>
+                <p className="text-xs text-muted-foreground text-center">
+                  Payment will be collected on delivery
+                </p>
+              </div>
+            </DialogContent>
+          </Dialog>
           <Button variant="outline" size="icon" className="border-border hover:bg-accent hover:scale-110 transition-all duration-300 group/heart">
             <Heart className="h-4 w-4 group-hover/heart:fill-red-500 group-hover/heart:text-red-500 transition-all duration-300" />
           </Button>

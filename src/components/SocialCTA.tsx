@@ -19,7 +19,7 @@ export const SocialCTA = () => {
     },
     {
       name: "Facebook",
-      url: "https://www.instagram.com/one_health_essentials/",
+      url: "https://www.facebook.com/one_health_essentials/",
       icon: Facebook,
       color: "from-blue-600 to-blue-700"
     },

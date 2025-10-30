@@ -31,11 +31,14 @@ export const HeroSection = () => {
       <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="max-w-5xl mx-auto text-center space-y-8 animate-fade-in-up">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold animate-pulse-glow">
+          <a 
+            href="#bundles" 
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold animate-pulse-glow hover:scale-105 transition-transform duration-300 cursor-pointer"
+          >
             <Gift className="h-4 w-4" />
             BLACK FRIDAY EXCLUSIVE
             <Gift className="h-4 w-4" />
-          </div>
+          </a>
 
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
