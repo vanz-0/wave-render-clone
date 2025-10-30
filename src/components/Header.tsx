@@ -16,14 +16,14 @@ export const Header = () => {
 
       {/* Main Navigation */}
       <nav className="bg-background/95 backdrop-blur-md border-b border-border px-4 py-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between max-w-full">
+          <div className="flex items-center gap-2">
             <img 
               src={logo} 
               alt="One Health Essentials Logo" 
-              className="h-12 w-auto transition-transform duration-300 hover:scale-110 animate-fade-in"
+              className="h-10 w-auto transition-transform duration-300 hover:scale-110 animate-fade-in"
             />
-            <div className="text-lg md:text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <div className="text-sm md:text-base font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               No.1 Health Essentials
             </div>
           </div>
