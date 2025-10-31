@@ -127,7 +127,7 @@ export const BundlesSection = () => {
             align: "start",
             loop: true,
           }}
-          className="w-full"
+          className="w-full relative"
         >
           <CarouselContent className="-ml-4 transition-transform duration-500 ease-out">
             {bundles.map((bundle, index) => (
@@ -136,8 +136,8 @@ export const BundlesSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden lg:flex -left-4" />
-          <CarouselNext className="hidden lg:flex -right-4" />
+          <CarouselPrevious className="left-0 md:-left-4 h-10 w-10 rounded-md border-2 border-border bg-background/80 backdrop-blur-sm hover:bg-background shadow-lg disabled:opacity-30" />
+          <CarouselNext className="right-0 md:-right-4 h-10 w-10 rounded-md border-2 border-border bg-background/80 backdrop-blur-sm hover:bg-background shadow-lg disabled:opacity-30" />
         </Carousel>
 
         {/* Pagination Dots */}
