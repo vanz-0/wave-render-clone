@@ -1,8 +1,17 @@
 import { BundleCard } from "./BundleCard";
+import { EmailCollectionForm } from "./EmailCollectionForm";
+import { ReviewPrompt } from "./ReviewPrompt";
 import bigSaleBundle from "@/assets/big-sale-bundle.png";
 import glamGlowBundle from "@/assets/glam-glow-bundle.png";
 import confidenceBundle from "@/assets/confidence-bundle.png";
 import { Sparkles } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export const BundlesSection = () => {
   const bundles = [
@@ -95,12 +104,27 @@ export const BundlesSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {bundles.map((bundle, index) => (
-            <div key={index} style={{ animationDelay: `${index * 0.1}s` }}>
-              <BundleCard {...bundle} />
-            </div>
-          ))}
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {bundles.map((bundle, index) => (
+              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                <BundleCard {...bundle} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex" />
+          <CarouselNext className="hidden md:flex" />
+        </Carousel>
+
+        <div className="mt-16 space-y-12">
+          <EmailCollectionForm />
+          <ReviewPrompt />
         </div>
       </div>
     </section>
