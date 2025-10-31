@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BundleCard } from "./BundleCard";
 import { EmailCollectionForm } from "./EmailCollectionForm";
 import { ReviewPrompt } from "./ReviewPrompt";
@@ -11,9 +12,25 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 
 export const BundlesSection = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   const bundles = [
     {
       title: "Big Sale Beauty Essentials",
@@ -105,22 +122,39 @@ export const BundlesSection = () => {
         </div>
 
         <Carousel
+          setApi={setApi}
           opts={{
             align: "start",
             loop: true,
           }}
           className="w-full"
         >
-          <CarouselContent className="-ml-4">
+          <CarouselContent className="-ml-4 transition-transform duration-500 ease-out">
             {bundles.map((bundle, index) => (
-              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 animate-fade-in">
                 <BundleCard {...bundle} />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex" />
-          <CarouselNext className="hidden md:flex" />
+          <CarouselPrevious className="hidden lg:flex -left-4" />
+          <CarouselNext className="hidden lg:flex -right-4" />
         </Carousel>
+
+        {/* Pagination Dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {Array.from({ length: count }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === current 
+                  ? "w-8 bg-gradient-to-r from-pink-600 to-purple-600" 
+                  : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
 
         <div className="mt-16 space-y-12">
           <EmailCollectionForm />

@@ -39,23 +39,23 @@ export const ReviewPrompt = () => {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-pink-600/10 via-purple-600/10 to-pink-600/10 p-8 md:p-12 border border-pink-200 dark:border-pink-800">
+    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-pink-600/10 via-purple-600/10 to-pink-600/10 p-4 sm:p-8 md:p-12 border border-pink-200 dark:border-pink-800 animate-fade-in">
       <div className="absolute inset-0 bg-gradient-to-br from-pink-600/5 to-purple-600/5" />
       
       <div className="relative z-10 max-w-2xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 text-pink-600 dark:text-purple-400 mb-4">
-          <Gift className="h-6 w-6" />
-          <span className="text-sm font-semibold uppercase tracking-wider">Reward for Your Feedback</span>
-          <Gift className="h-6 w-6" />
+        <div className="inline-flex items-center gap-2 text-pink-600 dark:text-purple-400 mb-3 md:mb-4">
+          <Gift className="h-5 w-5 md:h-6 md:w-6" />
+          <span className="text-xs md:text-sm font-semibold uppercase tracking-wider">Reward for Your Feedback</span>
+          <Gift className="h-5 w-5 md:h-6 md:w-6" />
         </div>
         
-        <h3 className="text-3xl md:text-4xl font-bold mb-4">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
           <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
             Love Our Deals? Tell Us!
           </span>
         </h3>
         
-        <p className="text-lg text-muted-foreground mb-6">
+        <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 md:mb-6 px-2">
           Share your experience and unlock an exclusive <span className="font-bold text-pink-600 dark:text-pink-400">20% discount code</span> for your next purchase!
         </p>
 
@@ -63,9 +63,10 @@ export const ReviewPrompt = () => {
           <DialogTrigger asChild>
             <Button
               size="lg"
-              className="h-14 px-10 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-semibold text-lg"
+              className="h-12 sm:h-14 px-6 sm:px-10 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-semibold text-sm sm:text-base md:text-lg transition-all hover:scale-105"
             >
-              Leave a Review & Get 20% OFF
+              <span className="hidden sm:inline">Leave a Review & Get 20% OFF</span>
+              <span className="sm:hidden">Review & Get 20% OFF</span>
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[500px]">
@@ -125,11 +126,13 @@ export const ReviewPrompt = () => {
           </DialogContent>
         </Dialog>
 
-        <div className="flex items-center justify-center gap-1 mt-6">
-          {[1, 2, 3, 4, 5].map((star) => (
-            <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-          ))}
-          <span className="ml-2 text-sm text-muted-foreground">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mt-4 md:mt-6">
+          <div className="flex gap-1">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Star key={star} className="h-4 w-4 md:h-5 md:w-5 fill-yellow-400 text-yellow-400" />
+            ))}
+          </div>
+          <span className="text-xs sm:text-sm text-muted-foreground">
             Trusted by 1,000+ happy customers
           </span>
         </div>
