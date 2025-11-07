@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export const EmailCollectionForm = () => {
   const [email, setEmail] = useState("");
@@ -23,15 +24,42 @@ export const EmailCollectionForm = () => {
 
     setIsSubmitting(true);
     
-    // Simulate submission
-    setTimeout(() => {
+    try {
+      const { error: dbError } = await supabase
+        .from('email_subscribers')
+        .insert([{ email }]);
+
+      if (dbError) {
+        if (dbError.code === '23505') {
+          toast({
+            title: "Already Subscribed",
+            description: "This email is already subscribed to our deals.",
+          });
+        } else {
+          throw dbError;
+        }
+      } else {
+        // Send welcome email
+        await supabase.functions.invoke('send-welcome-email', {
+          body: { email }
+        });
+
+        toast({
+          title: "Success! 🎉",
+          description: "You're now subscribed to exclusive deals!",
+        });
+        setEmail("");
+      }
+    } catch (error) {
+      console.error('Error subscribing:', error);
       toast({
-        title: "Success! 🎉",
-        description: "You're now subscribed to exclusive deals!",
+        title: "Error",
+        description: "Failed to subscribe. Please try again.",
+        variant: "destructive",
       });
-      setEmail("");
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
