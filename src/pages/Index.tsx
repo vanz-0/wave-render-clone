@@ -4,6 +4,7 @@ import { BundlesSection } from "@/components/BundlesSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
 import { SocialCTA } from "@/components/SocialCTA";
 import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
         <SocialCTA />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
