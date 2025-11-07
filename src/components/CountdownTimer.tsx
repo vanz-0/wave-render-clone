@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
 import { Clock } from "lucide-react";
 
+const getTimeUntilMidnightET = () => {
+  const now = new Date();
+  const etNow = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+  
+  const midnightET = new Date(etNow);
+  midnightET.setHours(24, 0, 0, 0);
+  
+  const diff = midnightET.getTime() - etNow.getTime();
+  
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  
+  return { hours, minutes, seconds };
+};
+
 export const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    hours: 16,
-    minutes: 32,
-    seconds: 0,
-  });
+  const [timeLeft, setTimeLeft] = useState(getTimeUntilMidnightET());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { hours: prev.hours, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
+      setTimeLeft(getTimeUntilMidnightET());
     }, 1000);
 
     return () => clearInterval(timer);

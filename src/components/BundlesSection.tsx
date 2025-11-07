@@ -111,12 +111,16 @@ export const BundlesSection = () => {
             <span className="text-sm font-semibold uppercase tracking-wider">Limited Time Offers</span>
             <Sparkles className="h-5 w-5" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Black Friday Bundle Bonanza
+          <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent drop-shadow-2xl animate-pulse-slow">
+              BLACK FRIDAY
             </span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <br />
+            <span className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
+              Bundle Bonanza
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-medium">
             Complete routines that save you money & simplify your wellness journey
           </p>
         </div>
