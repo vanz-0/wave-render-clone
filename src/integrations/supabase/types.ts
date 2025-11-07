@@ -14,7 +14,131 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      deals: {
+        Row: {
+          badge: string | null
+          created_at: string
+          deal_date: string | null
+          description: string
+          id: string
+          image_url: string
+          is_active: boolean | null
+          perfect_for: string[] | null
+          rating: number | null
+          regular_price: string
+          sale_price: string
+          savings: string
+          stock: string | null
+          title: string
+          updated_at: string
+          whats_inside: string[] | null
+        }
+        Insert: {
+          badge?: string | null
+          created_at?: string
+          deal_date?: string | null
+          description: string
+          id?: string
+          image_url: string
+          is_active?: boolean | null
+          perfect_for?: string[] | null
+          rating?: number | null
+          regular_price: string
+          sale_price: string
+          savings: string
+          stock?: string | null
+          title: string
+          updated_at?: string
+          whats_inside?: string[] | null
+        }
+        Update: {
+          badge?: string | null
+          created_at?: string
+          deal_date?: string | null
+          description?: string
+          id?: string
+          image_url?: string
+          is_active?: boolean | null
+          perfect_for?: string[] | null
+          rating?: number | null
+          regular_price?: string
+          sale_price?: string
+          savings?: string
+          stock?: string | null
+          title?: string
+          updated_at?: string
+          whats_inside?: string[] | null
+        }
+        Relationships: []
+      }
+      email_subscribers: {
+        Row: {
+          email: string
+          id: string
+          is_active: boolean | null
+          subscribed_at: string
+        }
+        Insert: {
+          email: string
+          id?: string
+          is_active?: boolean | null
+          subscribed_at?: string
+        }
+        Update: {
+          email?: string
+          id?: string
+          is_active?: boolean | null
+          subscribed_at?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string
+          customer_email: string
+          customer_name: string
+          customer_phone: string | null
+          deal_id: string | null
+          deal_price: string
+          deal_title: string
+          id: string
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          customer_phone?: string | null
+          deal_id?: string | null
+          deal_price: string
+          deal_title: string
+          id?: string
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          customer_phone?: string | null
+          deal_id?: string | null
+          deal_price?: string
+          deal_title?: string
+          id?: string
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_deal_id_fkey"
+            columns: ["deal_id"]
+            isOneToOne: false
+            referencedRelation: "deals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
