@@ -76,7 +76,7 @@ export const BundleCard = ({
       // Send WhatsApp message
       const phoneNumber = "254735558830";
       const message = encodeURIComponent(
-        `Hello! This is ${customerName}. I came by your Black Friday Exclusive Website and I would like to know more about ${title}. My contact: ${customerPhone}`
+        `Hello! This is ${customerName}. I came by your Black Friday Exclusive Website and I would like to know more about ${title}. My contact: ${customerPhone}${customerEmail ? `, Email: ${customerEmail}` : ''}${customerLocation ? `, Location: ${customerLocation}` : ''}`
       );
       window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
 
@@ -242,6 +242,20 @@ export const BundleCard = ({
                     <div className="flex justify-between text-sm">
                       <span>Price:</span>
                       <span className="font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{salePrice}</span>
+                    </div>
+                  </div>
+                  <div className="bg-green-50 dark:bg-green-950 p-4 rounded-lg space-y-3 border border-green-200 dark:border-green-800">
+                    <h4 className="font-semibold text-sm text-green-800 dark:text-green-200">M-Pesa Payment Options:</h4>
+                    <div className="space-y-2 text-xs">
+                      <div>
+                        <p className="font-medium text-green-700 dark:text-green-300">Buy Goods Till Number:</p>
+                        <p className="text-green-900 dark:text-green-100 font-bold">9094685</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-green-700 dark:text-green-300">PayBill Number:</p>
+                        <p className="text-green-900 dark:text-green-100 font-bold">211090</p>
+                        <p className="text-green-700 dark:text-green-300">Account: YOUR NAME</p>
+                      </div>
                     </div>
                   </div>
                   <Button 
