@@ -5,6 +5,8 @@ import { ReviewPrompt } from "./ReviewPrompt";
 import bigSaleBundle from "@/assets/big-sale-bundle.png";
 import glamGlowBundle from "@/assets/glam-glow-bundle.png";
 import confidenceBundle from "@/assets/confidence-bundle.png";
+import perfumeBundle from "@/assets/perfume-bundle.png";
+import communityBundle from "@/assets/community-bundle.png";
 import { Sparkles } from "lucide-react";
 import {
   Carousel,
@@ -52,7 +54,8 @@ export const BundlesSection = () => {
       salePrice: "Ksh 2,000",
       savings: "Ksh 2,500 (56% OFF!)",
       stock: "Only 8 left in stock!",
-      rating: 5
+      rating: 5,
+      isPurchasable: true
     },
     {
       title: "Glam & Glow Makeup Kit",
@@ -74,7 +77,8 @@ export const BundlesSection = () => {
       salePrice: "Ksh 1,000",
       savings: "Ksh 2,500 (71% OFF!)",
       stock: "Only 12 left in stock!",
-      rating: 5
+      rating: 5,
+      isPurchasable: true
     },
     {
       title: "Confidence Builder Set",
@@ -96,7 +100,54 @@ export const BundlesSection = () => {
       salePrice: "Ksh 1,000",
       savings: "Ksh 2,200 (69% OFF!)",
       stock: "Only 15 left in stock!",
-      rating: 5
+      rating: 5,
+      isPurchasable: true
+    },
+    {
+      title: "Luxury Perfume Collection",
+      description: "Premium fragrances for every occasion",
+      image: perfumeBundle,
+      badge: "30% OFF",
+      perfectFor: [
+        "Gift giving",
+        "Signature scents",
+        "Long-lasting fragrances"
+      ],
+      whatsInside: [
+        "Eau de Parfum (100ml)",
+        "Body Mist (200ml)",
+        "Perfume Travel Set",
+        "+ 2 more items"
+      ],
+      regularPrice: "Ksh 5,000",
+      salePrice: "Ksh 3,500",
+      savings: "Ksh 1,500 (30% OFF!)",
+      stock: "Limited Stock",
+      rating: 5,
+      isPurchasable: true
+    },
+    {
+      title: "Community VIP Bundle",
+      description: "Join our community for exclusive perks & up to 50% off",
+      image: communityBundle,
+      badge: "FIRST 100 ONLY",
+      perfectFor: [
+        "Early access to new products",
+        "Exclusive member discounts",
+        "Community events & giveaways"
+      ],
+      whatsInside: [
+        "Follow us on social media",
+        "Join our WhatsApp community",
+        "Leave a verified review",
+        "Get up to 50% OFF on future orders"
+      ],
+      regularPrice: "N/A",
+      salePrice: "FREE",
+      savings: "Up to 50% on all future orders!",
+      stock: "Only 100 spots available!",
+      rating: 5,
+      isPurchasable: false
     }
   ];
 

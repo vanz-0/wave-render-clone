@@ -5,6 +5,9 @@ import { Badge } from "./ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface BundleCardProps {
   title: string;
@@ -18,6 +21,7 @@ interface BundleCardProps {
   savings: string;
   stock: string;
   rating: number;
+  isPurchasable?: boolean;
 }
 
 export const BundleCard = ({
@@ -32,7 +36,80 @@ export const BundleCard = ({
   savings,
   stock,
   rating,
+  isPurchasable = true,
 }: BundleCardProps) => {
+  const [customerName, setCustomerName] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [customerLocation, setCustomerLocation] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const { toast } = useToast();
+
+  const handleOrderSubmit = async () => {
+    if (!customerName || !customerPhone) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in your name and phone number.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Save order to database
+      const { error: dbError } = await supabase
+        .from('orders')
+        .insert([{
+          customer_name: customerName,
+          customer_phone: customerPhone,
+          customer_email: customerEmail || null,
+          deal_title: title,
+          deal_price: salePrice,
+          status: 'pending'
+        }]);
+
+      if (dbError) throw dbError;
+
+      // Send WhatsApp message
+      const phoneNumber = "254735558830";
+      const message = encodeURIComponent(
+        `Hello! This is ${customerName}. I came by your Black Friday Exclusive Website and I would like to know more about ${title}. My contact: ${customerPhone}`
+      );
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+
+      toast({
+        title: "Order Received! 🎉",
+        description: "We'll contact you shortly via WhatsApp to confirm your order.",
+      });
+
+      setIsOpen(false);
+      setCustomerName("");
+      setCustomerPhone("");
+      setCustomerEmail("");
+      setCustomerLocation("");
+    } catch (error) {
+      console.error('Error submitting order:', error);
+      toast({
+        title: "Error",
+        description: "Failed to submit order. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleLearnMore = () => {
+    const phoneNumber = "254735558830";
+    const message = encodeURIComponent(
+      `Hello! I came by your Black Friday Exclusive Website and I would like to know more about ${title} and how to join your community for exclusive deals.`
+    );
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
     <Card className="bg-card border-border hover:border-purple-500/50 transition-all duration-500 overflow-hidden group hover:shadow-2xl hover:shadow-purple-500/20 animate-fade-in hover:-translate-y-2">
       <div className="relative overflow-hidden">
@@ -107,49 +184,88 @@ export const BundleCard = ({
         </div>
 
         <div className="flex gap-2 pt-4">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 group/btn">
-                <ShoppingCart className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
-                Order Now
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle>Complete Your Order</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-4 py-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" placeholder="John Doe" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" placeholder="+254 700 000 000" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="location">Delivery Location</Label>
-                  <Input id="location" placeholder="Westlands, Nairobi" />
-                </div>
-                <div className="bg-muted p-4 rounded-lg space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>Item:</span>
-                    <span className="font-semibold">{title}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>Price:</span>
-                    <span className="font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{salePrice}</span>
-                  </div>
-                </div>
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
-                  Confirm Order
+          {isPurchasable ? (
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+              <DialogTrigger asChild>
+                <Button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 group/btn">
+                  <ShoppingCart className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
+                  Order Now
                 </Button>
-                <p className="text-xs text-muted-foreground text-center">
-                  Payment will be collected on delivery
-                </p>
-              </div>
-            </DialogContent>
-          </Dialog>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Complete Your Order</DialogTitle>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Full Name *</Label>
+                    <Input 
+                      id="name" 
+                      placeholder="John Doe" 
+                      value={customerName}
+                      onChange={(e) => setCustomerName(e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number *</Label>
+                    <Input 
+                      id="phone" 
+                      placeholder="0735558830" 
+                      value={customerPhone}
+                      onChange={(e) => setCustomerPhone(e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email (Optional)</Label>
+                    <Input 
+                      id="email" 
+                      type="email"
+                      placeholder="john@example.com" 
+                      value={customerEmail}
+                      onChange={(e) => setCustomerEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="location">Delivery Location (Optional)</Label>
+                    <Input 
+                      id="location" 
+                      placeholder="Brentwood Arcade, Kiambu Rd" 
+                      value={customerLocation}
+                      onChange={(e) => setCustomerLocation(e.target.value)}
+                    />
+                  </div>
+                  <div className="bg-muted p-4 rounded-lg space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span>Item:</span>
+                      <span className="font-semibold">{title}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span>Price:</span>
+                      <span className="font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{salePrice}</span>
+                    </div>
+                  </div>
+                  <Button 
+                    onClick={handleOrderSubmit}
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                  >
+                    {isSubmitting ? "Processing..." : "Confirm Order"}
+                  </Button>
+                  <p className="text-xs text-muted-foreground text-center">
+                    We'll contact you via WhatsApp to confirm delivery details
+                  </p>
+                </div>
+              </DialogContent>
+            </Dialog>
+          ) : (
+            <Button 
+              onClick={handleLearnMore}
+              className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 group/btn"
+            >
+              <ShoppingCart className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
+              Learn More
+            </Button>
+          )}
           <Button variant="outline" size="icon" className="border-border hover:bg-accent hover:scale-110 transition-all duration-300 group/heart">
             <Heart className="h-4 w-4 group-hover/heart:fill-red-500 group-hover/heart:text-red-500 transition-all duration-300" />
           </Button>
