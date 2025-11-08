@@ -105,7 +105,7 @@ export const BundlesSection = () => {
     },
     {
       title: "Luxury Perfume Collection",
-      description: "Premium fragrances for every occasion",
+      description: "Premium fragrances at 30% OFF - prices vary by selection",
       image: perfumeBundle,
       badge: "30% OFF",
       perfectFor: [
@@ -119,12 +119,12 @@ export const BundlesSection = () => {
         "Perfume Travel Set",
         "+ 2 more items"
       ],
-      regularPrice: "Ksh 5,000",
-      salePrice: "Ksh 3,500",
-      savings: "Ksh 1,500 (30% OFF!)",
+      regularPrice: "Starting from Ksh 2,000",
+      salePrice: "30% OFF",
+      savings: "Save 30% on every perfume",
       stock: "Limited Stock",
       rating: 5,
-      isPurchasable: true
+      isPurchasable: false
     },
     {
       title: "Community VIP Bundle",

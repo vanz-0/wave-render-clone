@@ -44,6 +44,7 @@ export const BundleCard = ({
   const [customerLocation, setCustomerLocation] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
   const { toast } = useToast();
 
   const handleOrderSubmit = async () => {
@@ -74,7 +75,7 @@ export const BundleCard = ({
       if (dbError) throw dbError;
 
       // Send WhatsApp message
-      const phoneNumber = "254735558830";
+      const phoneNumber = "+254735558830";
       const message = encodeURIComponent(
         `Hello! This is ${customerName}. I came by your Black Friday Exclusive Website and I would like to know more about ${title}. My contact: ${customerPhone}${customerEmail ? `, Email: ${customerEmail}` : ''}${customerLocation ? `, Location: ${customerLocation}` : ''}`
       );
@@ -103,7 +104,7 @@ export const BundleCard = ({
   };
 
   const handleLearnMore = () => {
-    const phoneNumber = "254735558830";
+    const phoneNumber = "+254735558830";
     const message = encodeURIComponent(
       `Hello! I came by your Black Friday Exclusive Website and I would like to know more about ${title} and how to join your community for exclusive deals.`
     );
@@ -127,32 +128,45 @@ export const BundleCard = ({
       <CardContent className="p-6 space-y-4">
         <div className="flex items-start gap-2">
           <span className="text-2xl group-hover:scale-125 transition-transform duration-300">✨</span>
-          <div>
+          <div className="flex-1">
             <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">{title}</h3>
             <p className="text-sm text-muted-foreground group-hover:text-foreground mt-1 transition-colors duration-300">{description}</p>
           </div>
         </div>
 
-        <div>
-          <p className="font-semibold text-foreground mb-2">Perfect For:</p>
-          <div className="space-y-1">
-            {perfectFor.map((item, index) => (
-              <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Check className="h-4 w-4 text-green-500" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setShowDetails(!showDetails)}
+          className="w-full text-xs text-muted-foreground hover:text-foreground"
+        >
+          {showDetails ? "Show Less ▲" : "View Details ▼"}
+        </Button>
 
-        <div>
-          <p className="font-semibold text-foreground mb-2">What's Inside: {whatsInside.length}-Piece Set</p>
-          <div className="space-y-1">
-            {whatsInside.map((item, index) => (
-              <p key={index} className="text-sm text-muted-foreground pl-4">• {item}</p>
-            ))}
+        {showDetails && (
+          <div className="space-y-4 animate-in slide-in-from-top-2">
+            <div>
+              <p className="font-semibold text-foreground mb-2">Perfect For:</p>
+              <div className="space-y-1">
+                {perfectFor.map((item, index) => (
+                  <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Check className="h-4 w-4 text-green-500" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="font-semibold text-foreground mb-2">What's Inside: {whatsInside.length}-Piece Set</p>
+              <div className="space-y-1">
+                {whatsInside.map((item, index) => (
+                  <p key={index} className="text-sm text-muted-foreground pl-4">• {item}</p>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="space-y-2 pt-4 border-t border-border">
           <div className="flex items-center gap-2">
