@@ -64,22 +64,22 @@ export const SocialCTA = () => {
           {/* Heading */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight animate-fade-in">
             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
-              Health & Cosmetic Essentials
+              Official 1Health Essentials
             </span>
             <br />
             <span className="text-foreground">
-              Follow Us for Exclusive{" "}
+              Website{" "}
               <span className="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
-                Launch Updates!
+                Coming Soon!
               </span>
             </span>
           </h2>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Get ready for the ultimate beauty and wellness destination in Nairobi! We're curating the finest collection of authentic cosmetics and health essentials for the modern Kenyan woman.{" "}
+            We're building the official 1Health Essentials website - your one-stop destination for premium beauty and wellness products in Nairobi! Follow our social media to be the first to know when we launch.{" "}
             <span className="font-semibold text-foreground">
-              Follow our social media for exclusive launch updates and first access to our premium collection!
+              Get exclusive early access and special launch day deals!
             </span>
           </p>
 

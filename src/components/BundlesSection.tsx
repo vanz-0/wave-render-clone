@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { BundleCard } from "./BundleCard";
-import { EmailCollectionForm } from "./EmailCollectionForm";
-import { ReviewPrompt } from "./ReviewPrompt";
+import { EmailReviewForm } from "./EmailReviewForm";
 import bigSaleBundle from "@/assets/big-sale-bundle.png";
 import glamGlowBundle from "@/assets/glam-glow-bundle.png";
 import confidenceBundle from "@/assets/confidence-bundle.png";
@@ -216,9 +215,8 @@ export const BundlesSection = () => {
           ))}
         </div>
 
-        <div className="mt-16 space-y-12">
-          <EmailCollectionForm />
-          <ReviewPrompt />
+        <div className="mt-16">
+          <EmailReviewForm />
         </div>
       </div>
     </section>
