@@ -30,6 +30,7 @@ interface BundleCardProps {
   stock: string;
   rating: number;
   isPurchasable?: boolean;
+  whatsappMessageType?: string;
 }
 
 export const BundleCard = ({
@@ -45,6 +46,7 @@ export const BundleCard = ({
   stock,
   rating,
   isPurchasable = true,
+  whatsappMessageType
 }: BundleCardProps) => {
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
@@ -124,9 +126,40 @@ export const BundleCard = ({
 
   const handleLearnMore = () => {
     const phoneNumber = "+254735558830";
-    const message = encodeURIComponent(
-      `Hello! I came by your Black Friday Exclusive Website and I would like to know more about ${title} and how to join your community for exclusive deals.`
-    );
+    let message = "";
+    
+    switch(whatsappMessageType) {
+      case "community":
+        message = encodeURIComponent(
+          `Hello! I came by your Black Friday Exclusive Website and I would like to join your exclusive community group for VIP deals and perks.`
+        );
+        break;
+      case "perfumes":
+        message = encodeURIComponent(
+          `Hello! I came by your Black Friday Exclusive Website and I would like to know what premium perfumes you have available and their prices. I'm interested in designer brands like Dior, Chanel, Versace, Burberry, etc.`
+        );
+        break;
+      case "beauty-essentials":
+        message = encodeURIComponent(
+          `Hello! I came by your Black Friday Exclusive Website and I would like to order the Big Sale Beauty Essentials bundle (Ksh 2,000).`
+        );
+        break;
+      case "makeup-kit":
+        message = encodeURIComponent(
+          `Hello! I came by your Black Friday Exclusive Website and I would like to order the Glam & Glow Makeup Kit (Ksh 1,000).`
+        );
+        break;
+      case "confidence-set":
+        message = encodeURIComponent(
+          `Hello! I came by your Black Friday Exclusive Website and I would like to order the Confidence Builder Set (Ksh 1,000).`
+        );
+        break;
+      default:
+        message = encodeURIComponent(
+          `Hello! I came by your Black Friday Exclusive Website and I would like to know more about ${title}.`
+        );
+    }
+    
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 

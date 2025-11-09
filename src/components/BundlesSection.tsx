@@ -5,8 +5,8 @@ import { ReviewPrompt } from "./ReviewPrompt";
 import bigSaleBundle from "@/assets/big-sale-bundle.png";
 import glamGlowBundle from "@/assets/glam-glow-bundle.png";
 import confidenceBundle from "@/assets/confidence-bundle.png";
-import perfumeBundle from "@/assets/perfume-bundle.png";
-import communityBundle from "@/assets/community-bundle.png";
+import perfumeBundle from "@/assets/perfume-bundle-updated.png";
+import communityBundle from "@/assets/community-bundle-updated.png";
 import { Sparkles } from "lucide-react";
 import {
   Carousel,
@@ -35,6 +35,54 @@ export const BundlesSection = () => {
 
   const bundles = [
     {
+      title: "Community VIP Bundle",
+      description: "Join our exclusive community for VIP perks & up to 50% off",
+      image: communityBundle,
+      badge: "FIRST 100 ONLY",
+      perfectFor: [
+        "Early access to new products",
+        "Exclusive member discounts",
+        "Community events & giveaways"
+      ],
+      whatsInside: [
+        "Follow us on social media",
+        "Join our WhatsApp community",
+        "Leave a verified review",
+        "Get up to 50% OFF on future orders"
+      ],
+      regularPrice: "N/A",
+      salePrice: "FREE",
+      savings: "Up to 50% on all future orders!",
+      stock: "Only 100 spots available!",
+      rating: 5,
+      isPurchasable: false,
+      whatsappMessageType: "community"
+    },
+    {
+      title: "Premium Perfume Collection",
+      description: "Designer fragrances & refillables - Dior, Chanel, Versace, Burberry & more",
+      image: perfumeBundle,
+      badge: "LUXURY BRANDS",
+      perfectFor: [
+        "Designer brand perfumes",
+        "Refillable options available",
+        "Long-lasting fragrances"
+      ],
+      whatsInside: [
+        "Dior, Chanel, Versace fragrances",
+        "Burberry, Tom Ford & more",
+        "Original & Refillable options",
+        "50ml, 100ml & 200ml sizes"
+      ],
+      regularPrice: "Starting from Ksh 2,000",
+      salePrice: "Varies by selection",
+      savings: "Premium quality at best prices",
+      stock: "Wide selection available",
+      rating: 5,
+      isPurchasable: false,
+      whatsappMessageType: "perfumes"
+    },
+    {
       title: "Big Sale Beauty Essentials",
       description: "Complete skincare routine with DR.DESS premium products",
       image: bigSaleBundle,
@@ -55,7 +103,8 @@ export const BundlesSection = () => {
       savings: "Ksh 2,500 (56% OFF!)",
       stock: "Only 8 left in stock!",
       rating: 5,
-      isPurchasable: true
+      isPurchasable: true,
+      whatsappMessageType: "beauty-essentials"
     },
     {
       title: "Glam & Glow Makeup Kit",
@@ -78,7 +127,8 @@ export const BundlesSection = () => {
       savings: "Ksh 2,500 (71% OFF!)",
       stock: "Only 12 left in stock!",
       rating: 5,
-      isPurchasable: true
+      isPurchasable: true,
+      whatsappMessageType: "makeup-kit"
     },
     {
       title: "Confidence Builder Set",
@@ -101,53 +151,8 @@ export const BundlesSection = () => {
       savings: "Ksh 2,200 (69% OFF!)",
       stock: "Only 15 left in stock!",
       rating: 5,
-      isPurchasable: true
-    },
-    {
-      title: "Luxury Perfume Collection",
-      description: "Premium fragrances at 30% OFF - prices vary by selection",
-      image: perfumeBundle,
-      badge: "30% OFF",
-      perfectFor: [
-        "Gift giving",
-        "Signature scents",
-        "Long-lasting fragrances"
-      ],
-      whatsInside: [
-        "Eau de Parfum (100ml)",
-        "Body Mist (200ml)",
-        "Perfume Travel Set",
-        "+ 2 more items"
-      ],
-      regularPrice: "Starting from Ksh 2,000",
-      salePrice: "30% OFF",
-      savings: "Save 30% on every perfume",
-      stock: "Limited Stock",
-      rating: 5,
-      isPurchasable: false
-    },
-    {
-      title: "Community VIP Bundle",
-      description: "Join our community for exclusive perks & up to 50% off",
-      image: communityBundle,
-      badge: "FIRST 100 ONLY",
-      perfectFor: [
-        "Early access to new products",
-        "Exclusive member discounts",
-        "Community events & giveaways"
-      ],
-      whatsInside: [
-        "Follow us on social media",
-        "Join our WhatsApp community",
-        "Leave a verified review",
-        "Get up to 50% OFF on future orders"
-      ],
-      regularPrice: "N/A",
-      salePrice: "FREE",
-      savings: "Up to 50% on all future orders!",
-      stock: "Only 100 spots available!",
-      rating: 5,
-      isPurchasable: false
+      isPurchasable: true,
+      whatsappMessageType: "confidence-set"
     }
   ];
 
