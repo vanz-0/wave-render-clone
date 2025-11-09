@@ -8,6 +8,14 @@ import { Label } from "./ui/label";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+const orderSchema = z.object({
+  customer_name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
+  customer_phone: z.string().regex(/^\+254[17]\d{8}$/, "Phone must be in format +254XXXXXXXXX (Kenyan number)"),
+  customer_email: z.string().email("Invalid email address").max(255).optional().or(z.literal("")),
+  customer_location: z.string().max(200, "Location must be less than 200 characters").optional().or(z.literal("")),
+});
 
 interface BundleCardProps {
   title: string;
@@ -48,10 +56,19 @@ export const BundleCard = ({
   const { toast } = useToast();
 
   const handleOrderSubmit = async () => {
-    if (!customerName || !customerPhone) {
+    // Validate input data
+    const validationResult = orderSchema.safeParse({
+      customer_name: customerName,
+      customer_phone: customerPhone,
+      customer_email: customerEmail,
+      customer_location: customerLocation,
+    });
+
+    if (!validationResult.success) {
+      const firstError = validationResult.error.errors[0];
       toast({
-        title: "Missing Information",
-        description: "Please fill in your name and phone number.",
+        title: "Validation Error",
+        description: firstError.message,
         variant: "destructive",
       });
       return;
@@ -60,13 +77,15 @@ export const BundleCard = ({
     setIsSubmitting(true);
 
     try {
-      // Save order to database
+      const validatedData = validationResult.data;
+      
+      // Save order to database with validated data
       const { error: dbError } = await supabase
         .from('orders')
         .insert([{
-          customer_name: customerName,
-          customer_phone: customerPhone,
-          customer_email: customerEmail || null,
+          customer_name: validatedData.customer_name,
+          customer_phone: validatedData.customer_phone,
+          customer_email: validatedData.customer_email || null,
           deal_title: title,
           deal_price: salePrice,
           status: 'pending'
