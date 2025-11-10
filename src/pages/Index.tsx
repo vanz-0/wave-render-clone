@@ -5,6 +5,8 @@ import { BenefitsSection } from "@/components/BenefitsSection";
 import { SocialCTA } from "@/components/SocialCTA";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ReviewsDisplay } from "@/components/ReviewsDisplay";
+import { ReviewPrompt } from "@/components/ReviewPrompt";
 
 const Index = () => {
   return (
@@ -13,11 +15,13 @@ const Index = () => {
       <main>
         <HeroSection />
         <BundlesSection />
+        <ReviewsDisplay />
         <SocialCTA />
         <BenefitsSection />
       </main>
       <Footer />
       <WhatsAppButton />
+      <ReviewPrompt />
     </div>
   );
 };

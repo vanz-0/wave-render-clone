@@ -62,24 +62,15 @@ export const SocialCTA = () => {
           </div>
 
           {/* Heading */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight animate-fade-in">
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
-              Official 1Health Essentials
-            </span>
-            <br />
-            <span className="text-foreground">
-              Website{" "}
-              <span className="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">
-                Coming Soon!
-              </span>
-            </span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            1Health Essentials
           </h2>
-
-          {/* Description */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            We're building the official 1Health Essentials website - your one-stop destination for premium beauty and wellness products in Nairobi! Follow our social media to be the first to know when we launch.{" "}
-            <span className="font-semibold text-foreground">
-              Get exclusive early access and special launch day deals!
+          <p className="text-lg text-muted-foreground mb-2">
+            Brentwood Arcade, Thindiqua, Kiambu
+          </p>
+          <p className="text-md text-muted-foreground">
+            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-semibold">
+              Our Official Website & Blog Launching Soon
             </span>
           </p>
 

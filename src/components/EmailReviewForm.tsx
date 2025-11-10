@@ -204,9 +204,9 @@ export const EmailReviewForm = () => {
           <Button
             type="submit"
             disabled={isSubmitting || rating === 0}
-            className="w-full h-12 px-8 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold text-lg"
+            className="w-full h-12 px-4 sm:px-8 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold text-sm sm:text-base md:text-lg"
           >
-            {isSubmitting ? "Submitting..." : "Subscribe & Get My Rewards"}
+            {isSubmitting ? "Submitting..." : "Subscribe & Get Rewards"}
           </Button>
         </form>
 

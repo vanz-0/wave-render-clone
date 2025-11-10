@@ -17,7 +17,7 @@ export const Footer = () => {
     },
     {
       name: "Facebook",
-      url: "https://www.instagram.com/one_health_essentials/",
+      url: "https://www.facebook.com/profile.php?id=61571034004351",
       icon: Facebook,
     },
     {

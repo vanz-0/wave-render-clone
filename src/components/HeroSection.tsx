@@ -51,7 +51,7 @@ export const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            Premium Garnier, Dove & Safari Cosmetics bundles delivered across Nairobi
+            Premium beauty essentials from trusted brands like Garnier, Dove & Safari delivered across Nairobi
           </p>
 
           {/* CTA Button */}
