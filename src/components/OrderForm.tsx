@@ -54,7 +54,7 @@ export const OrderForm = ({ dealTitle, dealPrice, dealId, onClose }: OrderFormPr
           customer_name: name,
           customer_email: email || null,
           customer_phone: phone,
-          deal_id: dealId,
+          deal_id: dealId || null,
           deal_title: dealTitle,
           deal_price: dealPrice,
           status: 'pending'
@@ -79,7 +79,7 @@ export const OrderForm = ({ dealTitle, dealPrice, dealId, onClose }: OrderFormPr
         `👤 Name: ${name}\n` +
         `📍 Location: ${location}\n` +
         `📱 Phone: ${phone}\n\n` +
-        `I've already paid via M-Pesa. Please confirm my order!`
+        `Click "PAID" if you've already completed your M-Pesa payment to Paybill 211090!`
       );
       
       const phoneNumber = "+254735558830";
@@ -161,8 +161,8 @@ export const OrderForm = ({ dealTitle, dealPrice, dealId, onClose }: OrderFormPr
         <p className="text-lg font-bold text-purple-600">{dealPrice}</p>
         <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded p-3 space-y-1">
           <p className="text-xs font-semibold text-green-800 dark:text-green-200">M-Pesa Paybill Payment:</p>
-          <p className="text-xs text-green-700 dark:text-green-300">Paybill: <span className="font-bold">247247</span></p>
-          <p className="text-xs text-green-700 dark:text-green-300">Account: <span className="font-bold">1HEALTH</span></p>
+          <p className="text-xs text-green-700 dark:text-green-300">Paybill: <span className="font-bold">211090</span></p>
+          <p className="text-xs text-green-700 dark:text-green-300">Account Number: <span className="font-bold">Your Name</span></p>
           <p className="text-xs text-muted-foreground mt-2">
             After submitting, you'll be redirected to WhatsApp to confirm your payment
           </p>

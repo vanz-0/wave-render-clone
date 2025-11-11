@@ -116,23 +116,26 @@ export const EmailReviewForm = () => {
           </h3>
           
           <p className="text-lg text-muted-foreground mb-2">
-            Subscribe to our newsletter and leave a review to unlock:
+            Subscribe to our VIP newsletter and leave a review to receive:
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm font-semibold mt-4">
             <div className="flex items-center gap-2 text-purple-600 dark:text-pink-400">
               <Gift className="h-5 w-5" />
-              <span>20% Discount Code</span>
+              <span>Discount Announcements</span>
             </div>
             <div className="flex items-center gap-2 text-purple-600 dark:text-pink-400">
               <Mail className="h-5 w-5" />
-              <span>Exclusive Early Access</span>
+              <span>Direct Product Links</span>
             </div>
             <div className="flex items-center gap-2 text-purple-600 dark:text-pink-400">
               <Star className="h-5 w-5" />
-              <span>Hot Deals First</span>
+              <span>Insider Beauty Tips</span>
             </div>
           </div>
+          <p className="text-sm text-muted-foreground mt-4">
+            Get exclusive access to discounted products, learn how to maximize your beauty essentials, and discover insider information on premium products and their best use cases!
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
