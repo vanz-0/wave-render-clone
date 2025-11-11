@@ -9,7 +9,7 @@ import { ShoppingCart, MapPin } from "lucide-react";
 
 const orderSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
+  email: z.string().trim().email("Invalid email address").max(255).optional().or(z.literal("")),
   phone: z.string().trim().min(10, "Phone number must be at least 10 digits").max(15),
   location: z.string().trim().min(3, "Location must be at least 3 characters").max(200),
 });
@@ -52,7 +52,7 @@ export const OrderForm = ({ dealTitle, dealPrice, dealId, onClose }: OrderFormPr
         .from('orders')
         .insert([{ 
           customer_name: name,
-          customer_email: email,
+          customer_email: email || null,
           customer_phone: phone,
           deal_id: dealId,
           deal_title: dealTitle,
@@ -61,6 +61,15 @@ export const OrderForm = ({ dealTitle, dealPrice, dealId, onClose }: OrderFormPr
         }]);
 
       if (orderError) throw orderError;
+
+      // If email is provided, add to email subscribers
+      if (email && email.trim()) {
+        await supabase
+          .from('email_subscribers')
+          .insert([{ email: email.trim() }])
+          .select()
+          .single();
+      }
 
       // Create WhatsApp message
       const whatsappMessage = encodeURIComponent(
@@ -109,14 +118,13 @@ export const OrderForm = ({ dealTitle, dealPrice, dealId, onClose }: OrderFormPr
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="email">Email Address *</Label>
+        <Label htmlFor="email">Email Address (Optional - for exclusive deals)</Label>
         <Input
           id="email"
           type="email"
           placeholder="john@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
       </div>
 
@@ -147,13 +155,18 @@ export const OrderForm = ({ dealTitle, dealPrice, dealId, onClose }: OrderFormPr
         />
       </div>
 
-      <div className="bg-muted p-4 rounded-lg space-y-2">
+      <div className="bg-muted p-4 rounded-lg space-y-3">
         <p className="text-sm font-semibold">Order Summary:</p>
         <p className="text-sm">{dealTitle}</p>
         <p className="text-lg font-bold text-purple-600">{dealPrice}</p>
-        <p className="text-xs text-muted-foreground">
-          After submitting, you'll be redirected to WhatsApp to confirm payment via M-Pesa
-        </p>
+        <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded p-3 space-y-1">
+          <p className="text-xs font-semibold text-green-800 dark:text-green-200">M-Pesa Paybill Payment:</p>
+          <p className="text-xs text-green-700 dark:text-green-300">Paybill: <span className="font-bold">247247</span></p>
+          <p className="text-xs text-green-700 dark:text-green-300">Account: <span className="font-bold">1HEALTH</span></p>
+          <p className="text-xs text-muted-foreground mt-2">
+            After submitting, you'll be redirected to WhatsApp to confirm your payment
+          </p>
+        </div>
       </div>
 
       <Button

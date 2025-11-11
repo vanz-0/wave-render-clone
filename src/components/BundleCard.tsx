@@ -61,7 +61,7 @@ export const BundleCard = ({
         break;
       case "perfumes":
         message = encodeURIComponent(
-          `Hello! I came by your Black Friday Exclusive Website and I would like to know what premium perfumes you have available and their prices. I'm interested in designer brands like Dior, Chanel, Versace, Burberry, etc.`
+          `Hello! I came by your Black Friday Exclusive Website and I would like to learn more about the premium perfumes you have available. I'm interested in designer brands like Dior, Chanel, Versace, Burberry, etc.`
         );
         break;
       case "beauty-essentials":
@@ -189,7 +189,7 @@ export const BundleCard = ({
             onClick={handleOrderNow}
           >
             <ShoppingBag className="mr-2 h-4 w-4" />
-            {isPaidDeal && isPurchasable ? "Order Now" : "Join Community"}
+            {isPaidDeal && isPurchasable ? "Order Now" : whatsappMessageType === "perfumes" ? "Learn More" : "Join Community"}
           </Button>
           <Button variant="outline" size="icon" className="border-border hover:bg-accent hover:scale-110 transition-all duration-300 group/heart">
             <Heart className="h-4 w-4 group-hover/heart:fill-red-500 group-hover/heart:text-red-500 transition-all duration-300" />
