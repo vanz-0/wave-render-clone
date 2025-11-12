@@ -51,37 +51,41 @@ export const BundleCard = ({
 
   const handleLearnMore = () => {
     const phoneNumber = "+254735558830";
+    
+    // Build details section
+    const detailsText = `\n\n*Perfect For:*\n${perfectFor.map(item => `✓ ${item}`).join('\n')}\n\n*What's Inside (${whatsInside.length}-Piece Set):*\n${whatsInside.map(item => `• ${item}`).join('\n')}`;
+    
     let message = "";
     
     switch(whatsappMessageType) {
       case "community":
         message = encodeURIComponent(
-          `Hello! I came by your Black Friday Exclusive Website and I would like to join your exclusive community group for VIP deals and perks.`
+          `Hello! I came by your Black Friday Exclusive Website and I would like to join your exclusive community group for VIP deals and perks.${detailsText}`
         );
         break;
       case "perfumes":
         message = encodeURIComponent(
-          `Hello! I came by your Black Friday Exclusive Website and I would like to learn more about the premium perfumes you have available. I'm interested in designer brands like Dior, Chanel, Versace, Burberry, etc.`
+          `Hello! I came by your Black Friday Exclusive Website and I would like to learn more about the premium perfumes you have available. I'm interested in designer brands like Dior, Chanel, Versace, Burberry, etc.${detailsText}`
         );
         break;
       case "beauty-essentials":
         message = encodeURIComponent(
-          `Hello! I came by your Black Friday Exclusive Website and I would like to order the Big Sale Beauty Essentials bundle (Ksh 2,000).`
+          `Hello! I came by your Black Friday Exclusive Website and I would like to order the Big Sale Beauty Essentials bundle (Ksh 2,000).${detailsText}`
         );
         break;
       case "makeup-kit":
         message = encodeURIComponent(
-          `Hello! I came by your Black Friday Exclusive Website and I would like to order the Glam & Glow Makeup Kit (Ksh 1,000).`
+          `Hello! I came by your Black Friday Exclusive Website and I would like to order the Glam & Glow Makeup Kit (Ksh 1,000).${detailsText}`
         );
         break;
       case "confidence-set":
         message = encodeURIComponent(
-          `Hello! I came by your Black Friday Exclusive Website and I would like to order the Confidence Builder Set (Ksh 1,000).`
+          `Hello! I came by your Black Friday Exclusive Website and I would like to order the Confidence Builder Set (Ksh 1,000).${detailsText}`
         );
         break;
       default:
         message = encodeURIComponent(
-          `Hello! I came by your Black Friday Exclusive Website and I would like to know more about ${title}.`
+          `Hello! I came by your Black Friday Exclusive Website and I would like to know more about ${title}.${detailsText}`
         );
     }
     
@@ -96,9 +100,16 @@ export const BundleCard = ({
     }
   };
 
+  const handleCardClick = () => {
+    handleOrderNow();
+  };
+
   return (
     <div>
-      <Card className="bg-card border-border hover:border-purple-500/50 transition-all duration-500 overflow-hidden group hover:shadow-2xl hover:shadow-purple-500/20 animate-fade-in hover:-translate-y-2">
+      <Card 
+        className="bg-card border-border hover:border-purple-500/50 transition-all duration-500 overflow-hidden group hover:shadow-2xl hover:shadow-purple-500/20 animate-fade-in hover:-translate-y-2 cursor-pointer"
+        onClick={handleCardClick}
+      >
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
         <img 
@@ -123,7 +134,10 @@ export const BundleCard = ({
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => setShowDetails(!showDetails)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowDetails(!showDetails);
+          }}
           className="w-full text-xs text-muted-foreground hover:text-foreground"
         >
           {showDetails ? "Show Less ▲" : "View Details ▼"}
@@ -186,12 +200,20 @@ export const BundleCard = ({
         <div className="flex gap-3 mt-6">
           <Button 
             className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
-            onClick={handleOrderNow}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleOrderNow();
+            }}
           >
             <ShoppingBag className="mr-2 h-4 w-4" />
             {isPaidDeal && isPurchasable ? "Order Now" : whatsappMessageType === "perfumes" ? "Learn More" : "Join Community"}
           </Button>
-          <Button variant="outline" size="icon" className="border-border hover:bg-accent hover:scale-110 transition-all duration-300 group/heart">
+          <Button 
+            variant="outline" 
+            size="icon" 
+            className="border-border hover:bg-accent hover:scale-110 transition-all duration-300 group/heart"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Heart className="h-4 w-4 group-hover/heart:fill-red-500 group-hover/heart:text-red-500 transition-all duration-300" />
           </Button>
         </div>
