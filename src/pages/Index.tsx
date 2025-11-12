@@ -10,9 +10,9 @@ import { ReviewPrompt } from "@/components/ReviewPrompt";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="flex flex-col bg-background text-foreground">
       <Header />
-      <main>
+      <main className="flex-1">
         <HeroSection />
         <BundlesSection />
         <ReviewsDisplay />
