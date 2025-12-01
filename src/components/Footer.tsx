@@ -32,9 +32,14 @@ export const Footer = () => {
       <div className="container mx-auto">
         <div className="text-center space-y-6">
           {/* Logo */}
-          <div className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <div className="text-xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
             No.1 Health Essentials
           </div>
+          
+          {/* Holiday Message */}
+          <p className="text-sm text-muted-foreground italic">
+            🎄 Happy Holidays from One Health Essentials! 🎁
+          </p>
 
           {/* Social Links */}
           <div className="flex justify-center gap-4">
@@ -44,7 +49,7 @@ export const Footer = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600/10 to-pink-600/10 hover:from-purple-600 hover:to-pink-600 border border-border hover:border-transparent flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 hover:bg-gradient-to-br hover:from-primary hover:via-secondary hover:to-accent border border-border hover:border-transparent flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent/50 group"
                 aria-label={social.name}
               >
                 <social.icon className="h-5 w-5 text-muted-foreground group-hover:text-white transition-colors" />

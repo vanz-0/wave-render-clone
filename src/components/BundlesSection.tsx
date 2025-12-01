@@ -161,22 +161,22 @@ export const BundlesSection = () => {
       
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-12 animate-fade-in">
-          <div className="inline-flex items-center gap-2 text-purple-600 dark:text-pink-400 mb-4">
-            <Sparkles className="h-5 w-5" />
-            <span className="text-sm font-semibold uppercase tracking-wider">Limited Time Offers</span>
-            <Sparkles className="h-5 w-5" />
+          <div className="inline-flex items-center gap-2 text-primary mb-4">
+            <span className="animate-twinkle">🎄</span>
+            <span className="text-sm font-semibold uppercase tracking-wider">Holiday Season Offers</span>
+            <span className="animate-twinkle">⭐</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent drop-shadow-2xl animate-pulse-slow">
-              BLACK FRIDAY
+            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent drop-shadow-2xl animate-pulse-slow">
+              🎄 HOLIDAY SEASON
             </span>
             <br />
-            <span className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-              Bundle Bonanza
+            <span className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              Gift Bundles
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-medium">
-            Complete routines that save you money & simplify your wellness journey
+            Perfect gifts that save you money & bring joy this festive season
           </p>
         </div>
 

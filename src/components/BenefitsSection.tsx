@@ -7,33 +7,35 @@ export const BenefitsSection = () => {
       icon: Truck,
       title: "FREE Nairobi Delivery",
       description: "Zone 1 & 2",
-      color: "text-orange-500"
+      color: "text-primary"
     },
     {
       icon: Gift,
-      title: "Premium Gift Packaging",
+      title: "🎁 Holiday Gift Wrapping",
       description: "Luxury presentation ready",
-      color: "text-pink-500"
+      color: "text-secondary"
     },
     {
       icon: Sparkles,
       title: "Bonus Beauty Samples",
       description: "Test new products risk-free",
-      color: "text-purple-500"
+      color: "text-accent"
     },
     {
       icon: Diamond,
       title: "5% Loyalty Points",
       description: "Join our community",
-      color: "text-blue-500"
+      color: "text-primary"
     }
   ];
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-br from-purple-950/20 via-background to-pink-950/20 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-purple-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-64 h-64 bg-pink-500 rounded-full blur-3xl" />
+    <section className="py-16 px-4 relative overflow-hidden">
+      {/* Gold sparkle background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/10" />
+        <div className="absolute top-20 left-20 w-64 h-64 bg-accent rounded-full blur-3xl opacity-10 animate-pulse-slow" />
+        <div className="absolute bottom-20 right-20 w-64 h-64 bg-primary rounded-full blur-3xl opacity-10 animate-pulse-slow" style={{ animationDelay: '1s' }} />
       </div>
 
       <div className="container mx-auto relative z-10">
@@ -41,11 +43,13 @@ export const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <Card 
               key={index} 
-              className="bg-card/80 backdrop-blur-sm border-border hover:border-purple-500/50 transition-all duration-300 hover:scale-105 animate-fade-in"
+              className="bg-card/80 backdrop-blur-sm border-border hover:border-accent/50 transition-all duration-300 hover:scale-105 animate-fade-in relative overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+              {/* Decorative snowflakes in corners */}
+              <div className="absolute top-2 right-2 text-accent/20 animate-twinkle">❄️</div>
               <CardContent className="p-6 text-center space-y-3">
-                <div className={`mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 flex items-center justify-center ${benefit.color}`}>
+                <div className={`mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 flex items-center justify-center ${benefit.color}`}>
                   <benefit.icon className="h-8 w-8" />
                 </div>
                 <h3 className="font-bold text-foreground">{benefit.title}</h3>

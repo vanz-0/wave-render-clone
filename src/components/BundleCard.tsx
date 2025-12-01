@@ -117,7 +117,7 @@ export const BundleCard = ({
           alt={title}
           className="w-full h-64 object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500"
         />
-        <Badge className="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-none group-hover:scale-110 transition-transform duration-500 animate-pulse-slow">
+        <Badge className="absolute top-4 left-4 bg-gradient-to-r from-primary to-accent text-white border-none group-hover:scale-110 transition-transform duration-500 animate-pulse-slow">
           {badge}
         </Badge>
       </div>
@@ -173,8 +173,8 @@ export const BundleCard = ({
             <span className="text-sm text-muted-foreground line-through">Regular Price: {regularPrice}</span>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-sm text-foreground">Black Friday:</span>
-            <span className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="text-sm text-foreground">Holiday Price:</span>
+            <span className="text-3xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               {salePrice}
             </span>
           </div>
@@ -187,19 +187,19 @@ export const BundleCard = ({
 
         <div className="flex items-center justify-between pt-2">
           <div className="flex items-center gap-1">
-            <span className="text-sm text-orange-500">🔥</span>
-            <span className="text-sm font-medium text-orange-500">{stock}</span>
+            <span className="text-sm animate-twinkle">⭐</span>
+            <span className="text-sm font-medium text-accent">{stock}</span>
           </div>
           <div className="flex items-center gap-1">
             {Array.from({ length: rating }).map((_, i) => (
-              <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+              <Star key={i} className="h-4 w-4 fill-accent text-accent" />
             ))}
           </div>
         </div>
 
         <div className="flex gap-3 mt-6">
           <Button 
-            className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+            className="flex-1 bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 text-white border-2 border-accent/20"
             onClick={(e) => {
               e.stopPropagation();
               handleOrderNow();
@@ -211,10 +211,10 @@ export const BundleCard = ({
           <Button 
             variant="outline" 
             size="icon" 
-            className="border-border hover:bg-accent hover:scale-110 transition-all duration-300 group/heart"
+            className="border-accent/50 hover:bg-accent/10 hover:border-accent hover:scale-110 transition-all duration-300 group/heart"
             onClick={(e) => e.stopPropagation()}
           >
-            <Heart className="h-4 w-4 group-hover/heart:fill-red-500 group-hover/heart:text-red-500 transition-all duration-300" />
+            <Heart className="h-4 w-4 group-hover/heart:fill-primary group-hover/heart:text-primary transition-all duration-300" />
           </Button>
         </div>
       </CardContent>
