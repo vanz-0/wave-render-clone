@@ -17,34 +17,40 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 15%;
 
-    --primary: 280 60% 60%;
+    --primary: 0 72% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 300 70% 95%;
-    --secondary-foreground: 280 60% 30%;
+    --secondary: 120 61% 34%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 240 10% 95%;
     --muted-foreground: 240 5% 50%;
 
-    --accent: 330 80% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 93% 47%;
+    --accent-foreground: 240 10% 15%;
 
     --destructive: 0 85% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 240 10% 90%;
     --input: 240 10% 90%;
-    --ring: 280 60% 60%;
+    --ring: 0 72% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(280 60% 60%), hsl(330 80% 60%));
-    --gradient-hero: linear-gradient(135deg, hsl(280 60% 60%), hsl(330 80% 60%), hsl(20 90% 60%));
+    /* Christmas design tokens */
+    --christmas-red: 0 72% 50%;
+    --christmas-green: 120 61% 34%;
+    --christmas-gold: 45 93% 47%;
+    --christmas-silver: 0 0% 75%;
+    
+    --gradient-christmas: linear-gradient(135deg, hsl(0 72% 50%), hsl(45 93% 47%));
+    --gradient-festive: linear-gradient(135deg, hsl(120 61% 34%), hsl(45 93% 47%));
+    --gradient-holiday: linear-gradient(135deg, hsl(0 72% 50%), hsl(120 61% 34%), hsl(45 93% 47%));
     --gradient-card: linear-gradient(180deg, hsl(240 10% 12%), hsl(240 15% 8%));
     
-    --shadow-glow: 0 0 40px hsl(280 60% 60% / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(280 60% 20% / 0.4);
+    --shadow-glow: 0 0 40px hsl(45 93% 47% / 0.4);
+    --shadow-gold: 0 10px 30px -10px hsl(45 93% 47% / 0.5);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -59,24 +65,24 @@ All colors MUST be HSL.
     --popover: 240 15% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 280 60% 60%;
+    --primary: 0 72% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 10% 18%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 120 61% 34%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 240 10% 18%;
     --muted-foreground: 240 5% 65%;
 
-    --accent: 330 80% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 93% 47%;
+    --accent-foreground: 240 10% 15%;
 
     --destructive: 0 63% 50%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 240 10% 20%;
     --input: 240 10% 20%;
-    --ring: 280 60% 60%;
+    --ring: 0 72% 50%;
   }
 }
 

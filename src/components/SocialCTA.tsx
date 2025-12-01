@@ -55,10 +55,10 @@ export const SocialCTA = () => {
       <div className="container mx-auto relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold animate-pulse">
-            <Star className="h-4 w-4 fill-white" />
-            COMING SOON
-            <Star className="h-4 w-4 fill-white" />
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary via-secondary to-accent text-white px-6 py-2.5 rounded-full text-sm font-semibold animate-pulse">
+            <span className="animate-twinkle">🎄</span>
+            NEW YEAR LAUNCH
+            <span className="animate-twinkle">🎆</span>
           </div>
 
           {/* Heading */}
@@ -69,8 +69,8 @@ export const SocialCTA = () => {
             Brentwood Arcade, Thindiqua, Kiambu
           </p>
           <p className="text-md text-muted-foreground">
-            <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-semibold">
-              Our Official Website & Blog Launching Soon
+            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent font-semibold">
+              Our Official Website Launching in the New Year!
             </span>
           </p>
 
@@ -104,13 +104,13 @@ export const SocialCTA = () => {
             >
               <Button 
                 size="lg"
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-4 md:px-8 md:py-6 text-sm md:text-lg rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-500 hover:scale-105 group relative overflow-hidden"
+                className="w-full bg-gradient-to-r from-primary via-secondary to-accent hover:opacity-90 text-white px-4 py-4 md:px-8 md:py-6 text-sm md:text-lg rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-accent/50 transition-all duration-500 hover:scale-105 group relative overflow-hidden"
               >
                 <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
                 <span className="relative flex items-center justify-center gap-2 md:gap-3">
-                  <Star className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 fill-white group-hover:rotate-12 transition-transform duration-500" />
-                  <span className="text-center leading-tight">Be First to Know About Our Launch</span>
-                  <Star className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0 fill-white group-hover:rotate-12 transition-transform duration-500" />
+                  <span className="text-2xl group-hover:rotate-12 transition-transform duration-500">🎉</span>
+                  <span className="text-center leading-tight">Be First to Celebrate Our New Year Launch</span>
+                  <span className="text-2xl group-hover:rotate-12 transition-transform duration-500">🎊</span>
                 </span>
               </Button>
             </a>
